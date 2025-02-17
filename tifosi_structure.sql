@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 17 fév. 2025 à 17:13
+-- Généré le : lun. 17 fév. 2025 à 21:28
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -37,7 +37,7 @@ GRANT ALL PRIVILEGES ON `tifosi`.* TO `tifosi`@`%`;
 --
 
 CREATE TABLE `achete` (
-  `jour` date NOT NULL DEFAULT current_timestamp(),
+  `jour` datetime NOT NULL DEFAULT current_timestamp(),
   `key_client` int(11) NOT NULL,
   `key_focaccia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -143,7 +143,7 @@ CREATE TABLE `menu` (
 --
 
 CREATE TABLE `paye` (
-  `jour` date NOT NULL DEFAULT current_timestamp(),
+  `jour` datetime NOT NULL DEFAULT current_timestamp(),
   `key_client` int(11) NOT NULL,
   `key_menu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
