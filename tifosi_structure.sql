@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 17 fév. 2025 à 21:28
+-- Généré le : mar. 18 fév. 2025 à 19:21
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -37,6 +37,7 @@ GRANT ALL PRIVILEGES ON `tifosi`.* TO `tifosi`@`%`;
 --
 
 CREATE TABLE `achete` (
+  `id_achete` int(11) NOT NULL,
   `jour` datetime NOT NULL DEFAULT current_timestamp(),
   `key_client` int(11) NOT NULL,
   `key_focaccia` int(11) NOT NULL
@@ -74,6 +75,7 @@ CREATE TABLE `client` (
 --
 
 CREATE TABLE `comprend` (
+  `id_comprend` int(11) NOT NULL,
   `key_focaccia` int(11) NOT NULL,
   `key_ingredient` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -85,6 +87,7 @@ CREATE TABLE `comprend` (
 --
 
 CREATE TABLE `contient` (
+  `id_contient` int(11) NOT NULL,
   `key_menu` int(11) NOT NULL,
   `key_boisson` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -143,6 +146,7 @@ CREATE TABLE `menu` (
 --
 
 CREATE TABLE `paye` (
+  `id_paye` int(11) NOT NULL,
   `jour` datetime NOT NULL DEFAULT current_timestamp(),
   `key_client` int(11) NOT NULL,
   `key_menu` int(11) NOT NULL
@@ -156,6 +160,7 @@ CREATE TABLE `paye` (
 -- Index pour la table `achete`
 --
 ALTER TABLE `achete`
+  ADD PRIMARY KEY (`id_achete`),
   ADD KEY `key_client` (`key_client`),
   ADD KEY `key_focaccia` (`key_focaccia`);
 
@@ -176,6 +181,7 @@ ALTER TABLE `client`
 -- Index pour la table `comprend`
 --
 ALTER TABLE `comprend`
+  ADD PRIMARY KEY (`id_comprend`),
   ADD KEY `key_focaccia` (`key_focaccia`),
   ADD KEY `key_ingredient` (`key_ingredient`);
 
@@ -183,6 +189,7 @@ ALTER TABLE `comprend`
 -- Index pour la table `contient`
 --
 ALTER TABLE `contient`
+  ADD PRIMARY KEY (`id_contient`),
   ADD KEY `key_boisson` (`key_boisson`),
   ADD KEY `key_menu` (`key_menu`);
 
@@ -215,12 +222,19 @@ ALTER TABLE `menu`
 -- Index pour la table `paye`
 --
 ALTER TABLE `paye`
+  ADD PRIMARY KEY (`id_paye`),
   ADD KEY `key_client` (`key_client`),
   ADD KEY `key_menu` (`key_menu`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
+
+--
+-- AUTO_INCREMENT pour la table `achete`
+--
+ALTER TABLE `achete`
+  MODIFY `id_achete` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `boisson`
@@ -233,6 +247,18 @@ ALTER TABLE `boisson`
 --
 ALTER TABLE `client`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `comprend`
+--
+ALTER TABLE `comprend`
+  MODIFY `id_comprend` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `contient`
+--
+ALTER TABLE `contient`
+  MODIFY `id_contient` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `focaccia`
@@ -257,6 +283,12 @@ ALTER TABLE `marque`
 --
 ALTER TABLE `menu`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `paye`
+--
+ALTER TABLE `paye`
+  MODIFY `id_paye` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
